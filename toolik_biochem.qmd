@@ -17,15 +17,23 @@ library(janitor)
 ```{r}
 toolik_biochem <- read_csv(here::here("data", "2011_Kling_Akchem.csv"), na = c(".")) |>
            clean_names()
-toolik_in <- toolik_biochem %>% 
+
+toolik_inlet <- toolik_biochem %>%
+  dplyr::filter(site == "Toolik inlet" | site == "Toolik Inlet")
+
+inlet_biochem <- toolik_inlet %>% 
   dplyr::select(site, tdn_u_m, p_h, doc_u_m)
 
-mean_tool <- vector(mode = "numeric", length = ncol(toolik_in))
+#Store vector to calc mean value of each column
+mean_biochem <- vector(mode = "numeric", length = ncol(inlet_biochem))
 
-for(i in seq_along(toolik_in)) {
-  mean_val <- mean(toolik_in[[i]], na.rm = TRUE)
-  toolik_in[i] <- mean_val
+#Create for loop to find the mean value of each col
+for(i in seq_along(inlet_biochem)) {
+  mean_val <- mean(inlet_biochem[[i]], na.rm = TRUE)
+  print(mean_val)
 }
 
-toolik_biochem
+inlet_biochem %>% 
+  summarize(across(where(is.numeric), mean, na.rm = TRUE))
+
 ```
