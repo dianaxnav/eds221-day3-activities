@@ -30,7 +30,8 @@ mean_biochem <- vector(mode = "numeric", length = ncol(inlet_biochem))
 #Create for loop to find the mean value of each col
 for(i in seq_along(inlet_biochem)) {
   mean_val <- mean(inlet_biochem[[i]], na.rm = TRUE)
-  print(mean_val)
+  mean_biochem[i] <- mean_val
+  print(mean_biochem[i])
 }
 
 inlet_biochem %>% 

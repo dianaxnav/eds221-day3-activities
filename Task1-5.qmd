@@ -37,7 +37,7 @@ if(str_detect(species, "whale")) {
 
 ```{r}
 #Task 3
-base_burrito = c(6.5)
+base_burrito = 6.5
 
 main_ingredient = "steak"
 
