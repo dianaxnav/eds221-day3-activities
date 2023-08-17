@@ -14,7 +14,7 @@ library(tidyverse)
 #TASK 1
 #Create an object w a value of 48
 
-pm2_5 <- 130
+pm2_5 <- 20
 
 if(pm2_5 < 100) {
   print("Low to moderate risk")
@@ -37,13 +37,14 @@ if(str_detect(species, "whale")) {
 
 ```{r}
 #Task 3
-base_burrito <- 6.5
+base_burrito = c(6.5)
 
-main_ingredient <- switch(base_burrito, 
-                          "veggie" = print("6.50"),
-                          "chicken" = print(burrito + 3),
-                          "steak" = print(burrito + 3.25))
+main_ingredient = "steak"
 
+switch(main_ingredient,
+       "veggie" = print(base_burrito),
+       "chicken" = print(base_burrito + 3),
+       "steak" = print(base_burrito + 3.25))
 
 ```
 
